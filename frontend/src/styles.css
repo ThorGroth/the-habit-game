@@ -1,0 +1,43 @@
+body {
+  font-family: system-ui, sans-serif;
+  background: #0f172a;
+  color: #e5e7eb;
+}
+
+.container {
+  max-width: 600px;
+  margin: auto;
+  padding: 2rem;
+}
+
+h1 {
+  text-align: center;
+}
+
+.player {
+  background: #1e293b;
+  padding: 1rem;
+  border-radius: 8px;
+  margin-bottom: 1rem;
+}
+
+li {
+  background: #1e293b;
+  padding: 1rem;
+  margin-bottom: .5rem;
+  display: flex;
+  justify-content: space-between;
+  border-radius: 6px;
+}
+
+li.done {
+  opacity: 0.6;
+}
+
+button {
+  background: #22c55e;
+  border: none;
+  padding: .4rem .8rem;
+  border-radius: 4px;
+  cursor: pointer;
+}
