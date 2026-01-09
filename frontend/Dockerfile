@@ -1,4 +1,4 @@
-# ---------- Build Stage ----------
+# Build Stage
 FROM node:20-alpine AS build
 
 WORKDIR /app
@@ -11,7 +11,7 @@ RUN npm install
 COPY . .
 RUN npm run build
 
-# ---------- Runtime Stage ----------
+# Runtime Stage
 FROM nginx:alpine
 
 # Standard-Nginx-Konfiguration entfernen

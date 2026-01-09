@@ -5,7 +5,8 @@ services:
     container_name: the-habit-game-backend
     ports:
       - "8000:8000"
-
+    volumes: 
+      - ./backend/dev.db:/app/dev.db
   frontend:
     build:
       context: ./frontend

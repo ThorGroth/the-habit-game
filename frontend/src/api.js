@@ -1,4 +1,4 @@
-const API_URL = "http://backend:8000";
+const API_URL = import.meta.env.VITE_API_URL;
 
 export async function getHabitsToday() {
   const res = await fetch(`${API_URL}/habits/today?user_id=1`);
