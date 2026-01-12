@@ -38,3 +38,14 @@ export async function createHabit(title, description, baseXp) {
 
   return res.json();
 }
+
+export async function deleteHabit(habitId) {
+  const res = await fetch(
+    `${import.meta.env.VITE_API_URL}/habits/${habitId}?user_id=1`,
+    {
+      method: "DELETE"
+    }
+  );
+
+  return res.json();
+}

@@ -3,7 +3,8 @@ import {
   getHabitsToday,
   completeHabit,
   getPlayerStatus,
-  createHabit
+  createHabit,
+  deleteHabit
 } from "./api";
 import "./styles.css";
 
@@ -49,6 +50,14 @@ export default function App() {
     setNewDescription("");
     setNewXp(10);
 
+    loadData();
+  }
+
+  async function handleDelete(id) {
+  const ok = window.confirm("Gewohnheit wirklich löschen?");
+    if (!ok) return;
+
+    await deleteHabit(id);
     loadData();
   }
 
@@ -112,6 +121,13 @@ export default function App() {
               onClick={() => handleComplete(h.id)}
             >
               {h.completed ? "✔ erledigt" : "erledigen"}
+            </button>
+
+            <button
+              onClick={() => handleDelete(h.id)}
+              style={{ marginLeft: "8px" }}
+            >
+              🗑 löschen
             </button>
           </li>
         ))}

@@ -51,6 +51,29 @@ def complete_habit(payload: schemas.HabitStatusCreate, db: Session = Depends(get
         existing.completed = True
     db.commit()
 
+@router.delete("/{habit_id}")
+def delete_habit(
+    habit_id: int,
+    user_id: int = 1,
+    db: Session = Depends(get_db)
+):
+    habit = db.query(models.Habit).filter(
+        models.Habit.id == habit_id
+    ).first()
+
+    if not habit:
+        raise HTTPException(status_code=404, detail="Habit nicht gefunden")
+
+    # Optional: erst Status-Einträge löschen (sauber)
+    db.query(models.HabitStatusDaily).filter(
+        models.HabitStatusDaily.habit_id == habit_id
+    ).delete()
+
+    db.delete(habit)
+    db.commit()
+
+    return {"message": "Habit gelöscht"}
+
     # Reward XP: for demo, use habit.base_xp
     habit = db.query(models.Habit).get(payload.habit_id)
     # update player stats
