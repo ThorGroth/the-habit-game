@@ -21,3 +21,20 @@ export async function getPlayerStatus() {
   const res = await fetch(`${API_URL}/player/status?user_id=1`);
   return res.json();
 }
+
+export async function createHabit(title, description, baseXp) {
+  const res = await fetch(`${API_URL}/habits/`, {
+    method: "POST",
+    headers: {
+      "Content-Type": "application/json"
+    },
+    body: JSON.stringify({
+      title,
+      description,
+      base_xp: baseXp,
+      user_id: 1
+    })
+  });
+
+  return res.json();
+}
